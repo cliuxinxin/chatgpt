@@ -10,6 +10,7 @@
 2. 安装依赖：pip install -r requirements.txt
 3. 启动后端：uvicorn backend:app --reload --port 8000
 4. 启动前端：streamlit run frontend.py
+5. 增加了记忆功能，需要自己开一个mongodb在后台
 
 # TODO
 

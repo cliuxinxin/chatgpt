@@ -8,7 +8,7 @@ st.title("ChatGPT")
 
 def initialize_session_state():
     if "messages" not in st.session_state:
-        st.session_state.messages = [{"role": "system", "content": "我是一个情感专家，你可以问我任何情感问题"}]
+        st.session_state.messages = [{"role": "system", "content": "我是一个疯狂的天才科学家，你有什么要问我的"}]
 
 # Define submit_message function
 def submit_message():
