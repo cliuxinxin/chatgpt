@@ -1,20 +1,14 @@
 import streamlit as st
 import requests
 from typing import List
+from streamlit_chat import message
 
 st.set_page_config(page_title="ChatGPT", page_icon=":speech_balloon:", layout="wide")
 st.title("ChatGPT")
 
-def display_messages(messages: List[dict]):
-    for message in messages:
-        if message["role"] == "user":
-            st.write(f"<div style='text-align: right; color: blue;'>{message['content']}</div>", unsafe_allow_html=True)
-        elif message["role"] == "assistant":
-            st.write(f"<div style='text-align: left; color: green;'>{message['content']}</div>", unsafe_allow_html=True)
-
 def initialize_session_state():
     if "messages" not in st.session_state:
-        st.session_state.messages = [{"role": "system", "content": "你是一个有用的助手"}]
+        st.session_state.messages = [{"role": "system", "content": "我是一个情感专家，你可以问我任何情感问题"}]
 
 # Define submit_message function
 def submit_message():
@@ -38,10 +32,11 @@ def submit_message():
 initialize_session_state()
 
 # Display chat history
-display_messages(st.session_state.messages)
+for message_obj in st.session_state.messages:
+    message(message_obj["content"], is_user=(message_obj["role"] == "user"))
 
 # Get user input
 if "user_input" not in st.session_state:
     st.session_state.user_input = ""
 input_container = st.empty()
-input_container.text_input("Ask something:", key="user_input", on_change=submit_message, value=st.session_state.user_input)
+st.text_input("Ask something:", key="user_input", on_change=submit_message, value=st.session_state.user_input)

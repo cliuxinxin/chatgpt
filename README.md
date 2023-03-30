@@ -5,8 +5,6 @@
 1. 使用 API Key 进行机器人访问
 2. 上传 TXT 文件，创建知识库
 
-# 开始使用
-
 # 快速启动
 1. 新建api_key.txt，填入自己的openai的API
 2. 安装依赖：pip install -r requirements.txt
